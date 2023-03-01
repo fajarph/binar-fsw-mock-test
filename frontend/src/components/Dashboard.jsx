@@ -7,6 +7,8 @@ import { LogOut, reset } from "../features/authSlice"
 const Dashboard = () => {
     const {user} = useSelector((state) => state.auth)
     const [tasks, setTask] = useState([])
+    const [title, setTitle] = useState("")
+    const [summary, setSummary] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -17,6 +19,19 @@ const Dashboard = () => {
     const getTasks = async () => {
         const response = await axios.get('http://localhost:5000/tasks')
         setTask(response.data);
+    }
+
+    const saveTask = async(e) => {
+        e.preventDefault()
+        try {
+            await axios.post('http://localhost:5000/tasks', {
+                title: title,
+                summary: summary
+            })
+            navigate("/dashboard")
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     // const deleteUser = async(userId) => {
@@ -55,7 +70,7 @@ const Dashboard = () => {
                     </div>
                     <div>
                         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
+                        New Task
                         </button>
 
                         <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -63,12 +78,14 @@ const Dashboard = () => {
                             <div className="modal-content">
                             <div className="container">
                                 <h1 className="modal-title fs-5" id="exampleModalLabel">New Taks</h1>
-                                <form>
+                                <form onSubmit={saveTask}>
                                     <div className="mb-3">
                                         <label className="form-label">Title</label>
                                         <input 
                                             type="text" 
                                             className="form-control"
+                                            value={title} 
+                                            onChange={(e) => setTitle(e.target.value)}
                                             placeholder='Task Title'
                                         />
                                     </div>
@@ -77,6 +94,8 @@ const Dashboard = () => {
                                         <input 
                                             type="text" 
                                             className="form-control"
+                                            value={summary} 
+                                            onChange={(e) => setSummary(e.target.value)}
                                             placeholder='Task Summary'
                                         />
                                     </div>
