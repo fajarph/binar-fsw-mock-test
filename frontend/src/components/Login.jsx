@@ -25,30 +25,27 @@ const Login = () => {
 
   return (
     <>
-        <div className='container-fluid'>
-            <div className='container'>
-                <div className='d-flex justify-content-center'>
-                <form onSubmit={Auth}>
-                    {isError && <p className='has-text-centered'>{message}</p>}
-                    <div className="mb-3">
-                        <label className="form-label">Pin</label>
-                        <input 
-                            type="text" 
-                            className="form-control"
-                            value={pin} 
-                            onChange={(e) => setPin(e.target.value)}
-                            placeholder='Pin'
-                        />
-                    </div>
-                    <button 
-                        type="submit" 
-                        className="btn btn-primary"
-                    >
-                        {isLoading ? 'Loading...' : "Login"}
-                    </button>
-                </form>
+        <div className='container min-vh-100 d-flex justify-content-center align-items-center'>
+            <form onSubmit={Auth}>
+                {isError && <p className='has-text-centered'>{message}</p>}
+                <div className="mb-3">
+                    <label className="form-label">Pin</label>
+                    <input 
+                        type="text" 
+                        className="form-control"
+                        value={pin} 
+                        onChange={(e) => setPin(e.target.value)}
+                        placeholder='Pin'
+                    />
                 </div>
-            </div>
+                <p className="text-dark mt-3">Don't have an account?<a href="/" className='signin'>Sign Up</a></p>
+                <button 
+                    type="submit" 
+                    className="btn btn-dark"
+                >
+                    {isLoading ? 'Loading...' : "Login"}
+                </button>
+            </form>
         </div>
     </>
   )
