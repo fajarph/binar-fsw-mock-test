@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux"  
-import { useNavigate} from "react-router-dom"
+import { useNavigate, useParams} from "react-router-dom"
 import { LogOut, reset } from "../features/authSlice"
 
 const Dashboard = () => {
@@ -11,6 +11,7 @@ const Dashboard = () => {
     const [summary, setSummary] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { id } = useParams()
 
     useEffect(() => {
         getTasks()
@@ -28,7 +29,20 @@ const Dashboard = () => {
                 title: title,
                 summary: summary
             })
-            navigate("/dashboard")
+            
+            window.location.reload()
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const finishTask = async(e, id) => {
+        e.preventDefault()
+
+        try {
+            await axios.patch(`http://localhost:5000/tasks/${id}`)
+            
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }
@@ -61,7 +75,7 @@ const Dashboard = () => {
                             <div key={task.id}>
                                 <div className='d-flex'>
                                     <h5>{task.title}</h5>
-                                    <button type="button" className="btn btn-danger">Danger</button>
+                                    <button onClick={e => finishTask(e, task.id)} type="button" className="btn btn-danger">Danger</button>
                                 </div>
                                 <h5>{task.summary}</h5>
                             </div>

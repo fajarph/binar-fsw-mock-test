@@ -4,7 +4,8 @@ const getTasks = async(req, res) => {
     try {
         const response = await Task.findAll({
             where: {
-              userId: req.userId
+              userId: req.userId,
+              isDone: false
             }
         });
 
@@ -28,7 +29,23 @@ const createTask = async(req, res) => {
     }
 }
 
+const finishTask = async(req, res) => {
+    try {
+        await Task.update({
+            isDone: true
+        },{
+            where:{
+                id: req.params.id
+            }
+        })
+        res.status(200).json({msg: "Task Finished"})
+    } catch (error) {
+        res.status(400).json({msg: error.message})
+    }
+}
+
 module.exports = {
     getTasks,
-    createTask
+    createTask,
+    finishTask
 }

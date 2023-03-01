@@ -28,6 +28,10 @@ const Tasks = db.define('tasks',{
             notEmpty: true
         }
     },
+    isDone:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
     userId:{
         type: DataTypes.INTEGER,
         allowNull: false,
