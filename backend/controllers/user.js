@@ -1,16 +1,5 @@
 const User = require('../models/user.js')
 
-const getUsers = async(req, res) => {
-    try {
-        const response = await User.findAll({
-            attributes:["uuid", "name"]
-        });
-        res.status(200).json(response)
-    } catch (error) {
-        res.status(500).json({msg: error.message})
-    }
-}
-
 const createUser = async(req, res) => {
     try {
         const {name, pin} = req.body;
@@ -25,6 +14,5 @@ const createUser = async(req, res) => {
 }
 
 module.exports = {
-    getUsers,
     createUser
 }
