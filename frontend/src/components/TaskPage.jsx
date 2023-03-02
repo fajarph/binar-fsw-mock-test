@@ -1,16 +1,16 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
-import { useDispatch } from "react-redux"  
-import { useNavigate, useParams} from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"  
+import { useNavigate } from "react-router-dom"
 import { LogOut, reset } from "../features/authSlice"
 
-const Dashboard = () => {
+const TaskPage = () => {
     const [tasks, setTask] = useState([])
     const [title, setTitle] = useState("")
     const [summary, setSummary] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { id } = useParams()
+    const {user} = useSelector((state) => state.auth)
 
     useEffect(() => {
         getTasks()
@@ -65,6 +65,9 @@ const Dashboard = () => {
                         <button onClick={logout} type="button" className="btn btn-dark">Logout</button>
                     </div>
                 </div>
+                <div>
+                    <h2 className='subtitle'>Welcome Back <strong>{user && user.name}</strong></h2>
+                </div>
                 <div className='py-3'>
                     {tasks.map((task) => (
                         <div key={task.id} className="py-1">
@@ -74,7 +77,7 @@ const Dashboard = () => {
                                         <p className='fw-bold mt-3'>{task.title}</p>
                                     </div>
                                     <div className='col d-flex justify-content-end'>
-                                        <button onClick={e => finishTask(e, task.id)} type="button" className="btn btn-dark mt-3">Done</button>
+                                        <button onClick={e => finishTask(e, task.id)} type="button" className="btn btn-dark mt-3 bi bi-check-circle"></button>
                                     </div>
                                 </div>
                                 <div className=''>
@@ -133,4 +136,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default TaskPage

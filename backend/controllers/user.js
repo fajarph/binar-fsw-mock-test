@@ -3,7 +3,7 @@ const User = require('../models/user.js')
 const getUsers = async(req, res) => {
     try {
         const response = await User.findAll({
-            attributes:["uuid", "name", "pin"]
+            attributes:["uuid", "name"]
         });
         res.status(200).json(response)
     } catch (error) {
