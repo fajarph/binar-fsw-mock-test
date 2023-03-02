@@ -1,10 +1,10 @@
 const { Sequelize } = require("sequelize");
 const db = require("../config/Database.js")
-const Users = require("../models/user.js")
+const User = require("../models/user.js")
 
 const { DataTypes } = Sequelize
 
-const Tasks = db.define('tasks',{
+const Task = db.define('tasks',{
     uuid:{
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
@@ -43,7 +43,7 @@ const Tasks = db.define('tasks',{
     freezeTableName: true
 })
 
-Users.hasMany(Tasks)
-Tasks.belongsTo(Users, {foreignKey: "userId"})
+User.hasMany(Task)
+Task.belongsTo(User, {foreignKey: "userId"})
 
-module.exports = Tasks;
+module.exports = Task;

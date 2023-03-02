@@ -1,6 +1,6 @@
 const User = require("../models/user.js")
 
-const Login = async (req, res) => {
+const login = async (req, res) => {
     const user = await User.findOne({
         where: {
             pin: req.body.pin
@@ -13,7 +13,7 @@ const Login = async (req, res) => {
     res.status(200).json({uuid, name})
 }
 
-const Me = async(req, res) => {
+const me = async(req, res) => {
     if(!req.session.userId){
         return res.status(401).json({msg: "Mohon Login ke Akun Anda"})
     }
@@ -27,7 +27,7 @@ const Me = async(req, res) => {
     res.status(200).json(user)
 }
 
-const LogOut = (req, res) => {
+const logOut = (req, res) => {
     req.session.destroy((err) => {
         if(err) return res.status(400).json({msg: "Tidak Dapat Logout"})
         res.status(200).json({msg: "Anda Telah Logout"})
@@ -35,7 +35,7 @@ const LogOut = (req, res) => {
 }
 
 module.exports = {
-    Login,
-    Me,
-    LogOut
+    login,
+    me,
+    logOut
 }

@@ -10,7 +10,7 @@ const TaskPage = () => {
     const [summary, setSummary] = useState("")
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {user} = useSelector((state) => state.auth)
+    const { user } = useSelector((state) => state.auth)
 
     useEffect(() => {
         getTasks()
@@ -94,7 +94,7 @@ const TaskPage = () => {
                         </button>
                     </div>
 
-                    <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered">
                             <div className="modal-content">
                                 <div className="container">
