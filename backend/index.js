@@ -19,9 +19,9 @@ const store = new sessionStore({
     db: db 
 })
 
-// ;(async()=>{
-//     await db.sync({alter: true})
-// })()
+;(async()=>{
+    await db.sync({alter: true})
+})()
 
 app.use(session({
     secret: process.env.SESS_SECRET,
