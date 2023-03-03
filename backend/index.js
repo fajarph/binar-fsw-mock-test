@@ -45,7 +45,7 @@ app.use(user)
 app.use(task)
 app.use(auth)
 
-// store.sync()
+store.sync()
 
 app.listen(PORT, () => {
     console.log(`Server Menyala di PORT ` +PORT);
