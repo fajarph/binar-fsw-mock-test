@@ -35,7 +35,7 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:3000", "https://binar-fsw-mock-test-api.onrender.com"]
+    origin: ["http://localhost:3000", "https://binar-fsw-mock-test-client.onrender.com"]
 }))
 
 app.use(express.json()) // for parsing application/json
