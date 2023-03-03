@@ -17,14 +17,14 @@ const TaskPage = () => {
     }, [])
 
     const getTasks = async () => {
-        const response = await axios.get('http://localhost:5000/tasks')
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`)
         setTask(response.data);
     }
 
     const saveTask = async(e) => {
         e.preventDefault()
         try {
-            await axios.post('http://localhost:5000/tasks', {
+            await axios.post(`${process.env.REACT_APP_API_URL}/tasks`, {
                 title: title,
                 summary: summary
             })
@@ -39,7 +39,7 @@ const TaskPage = () => {
         e.preventDefault()
 
         try {
-            await axios.patch(`http://localhost:5000/tasks/${id}`)
+            await axios.patch(`${process.env.REACT_APP_API_URL}/tasks/${id}`)
 
             window.location.reload()
         } catch (error) {
