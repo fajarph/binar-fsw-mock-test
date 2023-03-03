@@ -1,7 +1,10 @@
 const { Sequelize } = require("sequelize")
+require('dotenv').config()
 
-const db = new Sequelize('binar_mock_test','postgres','27fajar03',{
-    host: 'localhost',
+const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST } = process.env
+
+const db = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+    host: DB_HOST,
     dialect: 'postgres'
 })
 
