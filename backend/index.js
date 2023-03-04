@@ -30,7 +30,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         secure: 'auto'
-    }
+    },
+    proxy: true
 }))
 
 app.use(cors({
