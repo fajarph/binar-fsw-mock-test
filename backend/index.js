@@ -25,12 +25,10 @@ const store = new sessionStore({
 
 app.use(session({
     secret: process.env.SESS_SECRET,
-    saveUninitialized: false,
     resave: false,
     store: store,
-    proxy: true,
     cookie: {
-        secure: 'auto'
+        secure: process.env.NODE_ENV === 'production'
     }
 }))
 
