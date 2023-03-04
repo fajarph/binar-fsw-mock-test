@@ -20,7 +20,7 @@ const Register = () => {
             })
             navigate("/login")
         } catch (error) {
-            console.log(error);
+            alert("Pin sudah ada")
         }
     }
 
