@@ -39,6 +39,8 @@ app.use(session({
     }
 }))
 
+store.sync()
+
 app.use(cors({
     credentials: true,
     origin: clientUrl
@@ -57,7 +59,11 @@ app.use(user)
 app.use(task)
 app.use(auth)
 
-store.sync()
+if (isProduction) {
+    app.get('*', (_, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(PORT, () => {
     console.log(`Server Menyala di PORT ` +PORT);
