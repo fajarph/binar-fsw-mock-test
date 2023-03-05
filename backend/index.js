@@ -54,12 +54,6 @@ app.use(user)
 app.use(task)
 app.use(auth)
 
-if (isProduction) {
-    app.get('*', (_, res) => {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-    });
-}
-
 app.listen(PORT, () => {
     console.log(`Server Menyala di PORT ` +PORT);
 });
