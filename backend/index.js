@@ -19,11 +19,6 @@ const store = new sessionStore({
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-let clientUrl = 'http://localhost:3000'
-if (isProduction) {
-    clientUrl = 'https://binar-fsw-mock-test-client.netlify.app'
-}
-
 ;(async()=>{
     await db.sync()
 })()
@@ -42,6 +37,10 @@ app.use(session({
 
 store.sync()
 
+let clientUrl = 'http://localhost:3000'
+if (isProduction) {
+    clientUrl = 'https://binar-fsw-mock-test-client.onrender.com'
+}
 app.use(cors({
     credentials: true,
     origin: clientUrl
