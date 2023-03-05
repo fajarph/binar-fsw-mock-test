@@ -19,11 +19,6 @@ const store = new sessionStore({
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-let clientUrl = 'http://localhost:3000'
-if (isProduction) {
-    clientUrl = 'https://binar-fsw-mock-test-client.onrender.com'
-}
-
 ;(async()=>{
     await db.sync()
 })()
@@ -33,12 +28,20 @@ app.use(session({
     store: store,
     cookie: {
         secure: isProduction,
-        httpOnly: true,
         maxAge: 1000 * 60 * 60 * 48,
+        httpOnly: isProduction,
         sameSite: 'none'
-    }
+    },
+    resave: false, // we support the touch method so per the express-session docs this should be set to false
+    proxy: true // if you do SSL outside of node.
 }))
 
+store.sync()
+
+let clientUrl = 'http://localhost:3000'
+if (isProduction) {
+    clientUrl = 'https://binar-fsw-mock-test-client.onrender.com'
+}
 app.use(cors({
     credentials: true,
     origin: clientUrl
@@ -51,7 +54,11 @@ app.use(user)
 app.use(task)
 app.use(auth)
 
-store.sync()
+if (isProduction) {
+    app.get('*', (_, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(PORT, () => {
     console.log(`Server Menyala di PORT ` +PORT);
