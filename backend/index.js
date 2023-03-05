@@ -33,7 +33,9 @@ app.use(session({
     secret: process.env.SESS_SECRET,
     store: store,
     cookie: {
-        secure: isProduction
+        secure: isProduction,
+        httpOnly: false,
+        sameSite: 'none'
     }
 }))
 
