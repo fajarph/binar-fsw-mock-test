@@ -8,8 +8,6 @@ Kegunaan JSON pada REST API adalah untuk mengirim dan menerima data dalam format
 
 REST API bekerja dengan menggunakan HTTP protocol untuk mengirim dan menerima data antara server dan client lalu dalam REST API, client mengirimkan permintaan ke server untuk meminta data tertentu dengan sebuah HTTP method GET, POST, PUT atau PATCH dan DELETE sebuah endpoint URI, dan sebuah header. Server merespon dengan sebuah HTTP status code dan data yang diminta oleh client dalam format yang telah disepakati sebelumnya, seperti JSON
 
-Getting Started
-
 # Cara menjalankan backend
 
 1. Buka terminal dan jalankan `cd backend`
@@ -17,7 +15,7 @@ Getting Started
 3. Create database secara manual di masing-masing database yang anda pakai contoh dari saya, saya menggunakan dbeaver
 4. Buat file `.env` yang baru lalu isi berdasarkan contoh `.env.example`
 5. Setelah itu `npm start` dan table akan terbuat dengan sendirinya
-6. Untuk mencoba menjalankan APInya bisa menggunakan postman dangan base url http://localhost:5000
+6. Untuk mencoba menjalankan APInya bisa menggunakan Postman dangan base url http://localhost:5000
 
 # Cara menjalankan frontend
 
