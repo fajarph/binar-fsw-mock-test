@@ -17,6 +17,7 @@ Getting Started
 3. Create database secara manual di masing-masing database yang anda pakai contoh dari saya, saya menggunakan dbeaver
 4. Buat file `.env` yang baru lalu isi berdasarkan contoh `.env.example`
 5. Setelah itu `npm start` dan table akan terbuat dengan sendirinya
+6. Untuk mencoba menjalankan APInya bisa menggunakan postman dangan base url http://localhost:5000
 
 # Cara menjalankan frontend
 
