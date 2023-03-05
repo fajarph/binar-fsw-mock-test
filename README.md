@@ -10,12 +10,21 @@ REST API bekerja dengan menggunakan HTTP protocol untuk mengirim dan menerima da
 
 Getting Started
 
-# npm install
-Untuk menginstall beberapa package yang telah ada
+# Cara menjalankan backend
 
-# npm start
-Untuk menjalankan proyek tersebut, lalu buka di browser http://localhost:3000 oh iya sebelum itu kalian juga harus npm start di bagian terminal dengan cara menggunakan 2 terminal yang satu untuk backend dan yang satu lagi untuk frontend
+1. Buka terminal dan jalankan `cd backend`
+2. Lalu jalankan `npm i` untuk menginstall package package yang telah tersedia di backend
+3. Create database secara manual di masing-masing database yang anda pakai contoh dari saya, saya menggunakan dbeaver
+4. Buat file `.env` yang baru lalu isi berdasarkan contoh `.env.example`
+5. Setelah itu `npm start` dan table akan terbuat dengan sendirinya
 
-# deskripsi fitur
+# Cara menjalankan frontend
+
+1. Buka terminal baru dan jalankan `cd frontend` 
+2. Lalu jalankan `npm i` untuk menginstall package package yang telah tersedia di backend
+4. Buat file `.env` yang baru lalu isi berdasarkan contoh `.env.example` (isi sesuai dengan port yang anda gunakan)
+5. Setelah itu `npm start` lalu buka di browser http://localhost:3000
+
+# Deskripsi fitur
 Website tersebut adalah sebuah platform yang memungkinkan pengguna untuk melakukan login dengan menggunakan 4 angka yang telah didaftarkan sebelumnya. Setelah login, pengguna akan diarahkan ke halaman utama yang memiliki fitur my task atau bisa disebut juga dengan to-do list sederhana yang dibuat dengan React Redux. Data to-do list tersebut tersimpan di server dan diakses melalui API. Pengguna dapat menambahkan, dan menyelesaikan task yang telah dikerjakan dengan menekan button veklis item dari to-do list melalui antarmuka pengguna yang disediakan oleh website. Tujuan dari website ini adalah memudahkan pengguna untuk mengelola to-do list mereka secara online dan dapat diakses dari mana saja.
 
