@@ -17,7 +17,7 @@ const Register = () => {
             await axios.post(`${process.env.REACT_APP_API_URL}/users`, {
                 name: name,
                 pin: pin
-            }, { withCredentials: true })
+            })
             navigate("/login")
         } catch (error) {
             alert("Pin sudah ada")
