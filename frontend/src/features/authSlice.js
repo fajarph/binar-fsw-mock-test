@@ -25,7 +25,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async(user, thunkApi
 
 export const getMe = createAsyncThunk("user/getMe", async(_, thunkApi) => {
     try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/me`, {}, { withCredentials: true }) 
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/me`, { withCredentials: true }) 
         return response.data
     } catch (error) {
         if(error.response){
