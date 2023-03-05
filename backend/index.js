@@ -22,7 +22,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 let clientUrl = 'http://localhost:3000'
 if (isProduction) {
-    clientUrl = 'https://binar-fsw-mock-test-client.onrender.com'
+    clientUrl = ['https://binar-fsw-mock-test-client.onrender.com', 'https://binar-fsw-mock-test-client.netlify.app']
 }
 
 ;(async()=>{
